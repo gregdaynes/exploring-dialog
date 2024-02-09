@@ -1,0 +1,41 @@
+<!doctype html>
+<style>
+	dialog {
+		display: block;
+	}
+
+	dialog:target {
+		animation: fade-in 1s ease normal;
+	}
+
+	dialog:not(:target):not([open]) {
+		animation: fade-out 1s ease normal;
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-out {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+</style>
+<body>
+	<a href="#dialog">Open</a>
+
+	<dialog id="dialog">
+		<p>Test</p>
+
+		<a href="#!">Close</a>
+	</dialog>
+</body>

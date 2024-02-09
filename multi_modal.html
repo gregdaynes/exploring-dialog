@@ -1,0 +1,32 @@
+<!doctype html>
+<body>
+	<button id="open-first">Open</button>
+
+	<dialog id="first">
+		<p>Test</p>
+
+		<button id="open-second">Open</button>
+
+		<form method="dialog">
+			<button id="close-first">&times;</button>
+		</form>
+	</dialog>
+
+	<dialog id="second">
+		<p>Test</p>
+
+		<form method="dialog">
+			<button id="close-second">&times;</button>
+		</form>
+	</dialog>
+
+	<script>
+		document.querySelector('#open-first').addEventListener('click', () => {
+			document.querySelector('#first').showModal();
+		});
+
+		document.querySelector('#open-second').addEventListener('click', () => {
+			document.querySelector('#second').showModal();
+		});
+	</script>
+</body>

@@ -1,0 +1,19 @@
+<!doctype html>
+<style>
+	dialog {
+		display: block;
+	}
+
+	dialog:not(:target):not([open]) {
+		display: none;
+	}
+</style>
+<body>
+	<a href="#dialog">Open</a>
+
+	<dialog id="dialog">
+		<p>Test</p>
+
+		<a href="#!">Close</a>
+	</dialog>
+</body>

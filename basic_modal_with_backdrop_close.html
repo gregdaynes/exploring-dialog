@@ -1,0 +1,19 @@
+<!doctype html>
+<body>
+	<button onclick="document.querySelector('dialog').showModal()">Open</button>
+
+	<dialog>
+		<p>Test</p>
+
+		<form method="dialog">
+			<button>&times;</button>
+		</form>
+	</dialog>
+
+	<script>
+		const dialog = document.querySelector('dialog');
+		dialog.addEventListener('click', ({ target }) => {
+			target === dialog && dialog.close();
+		});
+	</script>
+</body>

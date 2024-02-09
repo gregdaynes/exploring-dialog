@@ -1,0 +1,63 @@
+<!doctype html>
+<style>
+	dialog[open] {
+		animation: fade-in 1s ease normal;
+	}
+
+	dialog.fade-out {
+		animation: fade-out 1s ease normal;
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-out {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+</style>
+
+<body>
+	<button id="open">Open</button>
+
+	<dialog>
+		<p>Test</p>
+
+		<button id="close">&times;</button>
+	</dialog>
+
+	<script>
+		const dialog = document.querySelector('dialog')
+
+		function open () {
+			dialog.showModal();
+		}
+
+		function close() {
+			dialog.classList.add('fade-out');
+			dialog.addEventListener('animationend', () => {
+				console.log('end')
+				dialog.close();
+				dialog.classList.remove('fade-out');
+			}, { once: true });
+		}
+
+		document.querySelector('#open').addEventListener('click', open);
+		document.querySelector('#close').addEventListener('click', close);
+
+		document.addEventListener('DOMContentLoaded', () => {
+			setTimeout(open, 1);
+			setTimeout(close, 3000);
+		});
+	</script>
+</body>

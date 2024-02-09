@@ -1,0 +1,31 @@
+<!doctype html>
+<style>
+	dialog {
+		display: block;
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	dialog:not(:target):not([open]),
+	dialog:not(:target):not([open])~.backdrop {
+		display: none;
+	}
+
+	dialog ~ .backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, .5);
+	}
+</style>
+<body>
+	<a href="#dialog">Open</a>
+
+	<dialog id="dialog">
+		<p>Test</p>
+
+		<a href="#!">Close</a>
+	</dialog>
+
+	<div class="backdrop"></div>
+</body>

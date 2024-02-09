@@ -1,0 +1,26 @@
+<!doctype html>
+<style>
+	dialog {
+		margin-inline-end: 0;
+		height: 100dvh;
+	}
+</style>
+
+<body>
+	<button onclick="document.querySelector('dialog').showModal()">Open</button>
+
+	<dialog>
+		<p>Test</p>
+
+		<form method="dialog">
+			<button>&times;</button>
+		</form>
+	</dialog>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const dialog = document.querySelector('dialog')
+			dialog.showModal();
+		});
+	</script>
+</body>

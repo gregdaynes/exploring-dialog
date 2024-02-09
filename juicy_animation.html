@@ -1,0 +1,103 @@
+<!doctype html>
+<style>
+	dialog[open] {
+		animation: epic-easing-bounce-custom 1s linear forwards;
+	}
+
+	dialog.fade-out {
+		animation: fade-out 1s ease normal;
+	}
+
+	@keyframes epic-easing-bounce-custom {
+ 0%     { transform: translateY(-360px); }
+2.22%  { transform: translateY(-302.802px); }
+4.44%  { transform: translateY(-227.803px); }
+6.67%  { transform: translateY(-146.376px); }
+8.89%  { transform: translateY(-68.058px); }
+11.11% { transform: translateY(0px); }
+13.33% { transform: translateY(-53.233px); }
+15.56% { transform: translateY(-89.55px); }
+17.78% { transform: translateY(-109.007px); }
+20%    { transform: translateY(-113.332px); }
+22.22% { transform: translateY(-105.389px); }
+24.44% { transform: translateY(-88.644px); }
+26.67% { transform: translateY(-66.689px); }
+28.89% { transform: translateY(-42.851px); }
+31.11% { transform: translateY(-19.924px); }
+33.33% { transform: translateY(0px); }
+35.56% { transform: translateY(-15.584px); }
+37.78% { transform: translateY(-26.216px); }
+40%    { transform: translateY(-31.912px); }
+42.22% { transform: translateY(-33.178px); }
+44.44% { transform: translateY(-30.852px); }
+46.67% { transform: translateY(-25.95px); }
+48.89% { transform: translateY(-19.523px); }
+51.11% { transform: translateY(-12.545px); }
+53.33% { transform: translateY(-5.833px); }
+55.56% { transform: translateY(0px); }
+57.78% { transform: translateY(-4.56200000000001px); }
+60%    { transform: translateY(-7.67500000000001px); }
+62.22% { transform: translateY(-9.34200000000001px); }
+64.44% { transform: translateY(-9.71299999999999px); }
+66.67% { transform: translateY(-9.03200000000001px); }
+68.89% { transform: translateY(-7.59700000000001px); }
+71.11% { transform: translateY(-5.715px); }
+73.33% { transform: translateY(-3.672px); }
+75.56% { transform: translateY(-1.708px); }
+77.78% { transform: translateY(0px); }
+80%    { transform: translateY(-1.33600000000001px); }
+82.22% { transform: translateY(-2.24700000000001px); }
+84.44% { transform: translateY(-2.73500000000001px); }
+86.67% { transform: translateY(-2.84299999999999px); }
+88.89% { transform: translateY(-2.64400000000001px); }
+91.11% { transform: translateY(-2.22399999999999px); }
+93.33% { transform: translateY(-1.673px); }
+95.56% { transform: translateY(-1.07499999999999px); }
+97.78% { transform: translateY(-0.5px); }
+100%   { transform: translateY(0px); }
+}
+
+	@keyframes fade-out {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+</style>
+
+<body>
+	<button id="open">Open</button>
+
+	<dialog>
+		<p>Test</p>
+
+		<button id="close">&times;</button>
+	</dialog>
+
+	<script>
+		const dialog = document.querySelector('dialog')
+
+		function open () {
+			dialog.showModal();
+		}
+
+		function close() {
+			dialog.classList.add('fade-out');
+			dialog.addEventListener('animationend', () => {
+				console.log('end')
+				dialog.close();
+				dialog.classList.remove('fade-out');
+			}, { once: true });
+		}
+
+		document.querySelector('#open').addEventListener('click', open);
+		document.querySelector('#close').addEventListener('click', close);
+
+		document.addEventListener('DOMContentLoaded', () => {
+			setTimeout(open, 1);
+			setTimeout(close, 3000);
+		});
+	</script>
+</body>
